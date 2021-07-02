@@ -27,11 +27,10 @@
       }
     },
     "buildEnv": {
-      "CHOST": "#{os == 'windows' ? 'x86_64-w64-mingw32': '' }",
       "CFLAGS": "-fPIC -O2"
     },
     "build": [
-      "./configure --prefix=#{self.install} --disable-silent-rules --disable-dependency-tracking #{os == 'windows' ? '--uname=cygwin' : ''}",
+      "./configure --prefix=#{self.install} --disable-silent-rules --disable-dependency-tracking #{os == 'windows' ? '--host=x86_64-w64-mingw32' : ''}",
       "make -j4",
       "make test"
     ],
